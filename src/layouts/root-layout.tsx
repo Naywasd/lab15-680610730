@@ -1,5 +1,4 @@
 import { Outlet } from "react-router";
-
 import { AppSidebar } from "@/components/app-sidebar";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Separator } from "@/components/ui/separator";
@@ -8,6 +7,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { currentStudent } from "@/lib/mock-data";
 
 export default function RootLayout() {
   return (
@@ -22,9 +22,14 @@ export default function RootLayout() {
           </div>
           <ModeToggle />
         </header>
+
         <main className="flex-1 p-4">
           <Outlet />
         </main>
+
+        <footer className="border-t py-3 text-center text-xs text-muted-foreground">
+          จัดทำโดย {currentStudent.firstName} {currentStudent.lastName} รหัสนักศึกษา {currentStudent.studentId}
+        </footer>
       </SidebarInset>
     </SidebarProvider>
   );
